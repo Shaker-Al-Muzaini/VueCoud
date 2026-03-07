@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -11,7 +12,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return inertia('posts/Index');
+        $posts = Post::latest()->get();
+
+        return inertia('posts/Index', compact('posts'));
     }
 
     /**
@@ -25,17 +28,23 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        Post::create($request->validated());
+
+        return to_route('posts.index');
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(string $id) {
+        $post = Post::findOrFail($id);
+
+        return inertia('posts/Show', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -43,15 +52,23 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return inertia('posts/update', [
+            'post' => $post
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PostRequest $request, string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->update($request->validated());
+
+        return to_route('posts.index');
     }
 
     /**
@@ -59,6 +76,9 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return to_route('posts.index');
     }
 }

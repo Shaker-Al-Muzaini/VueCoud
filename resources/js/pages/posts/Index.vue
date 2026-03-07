@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head ,Link } from '@inertiajs/vue3';
+import { Head ,Link ,router  } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
 import type { BreadcrumbItem } from '@/types';
 
@@ -10,23 +10,23 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-const posts = [
-    {
-        id: 1,
-        title: 'First Post',
-        body: 'This is the first post content',
-    },
-    {
-        id: 2,
-        title: 'Second Post',
-        body: 'This is the second post content',
-    },
-    {
-        id: 3,
-        title: 'Third Post',
-        body: 'This is the third post content',
-    },
-];
+const props = defineProps<{
+    posts: { id: number; title: string; body: string }[]
+}>();
+
+function deletePost(id: number) {
+    if (confirm('Are you sure you want to delete this post?')) {
+        router.delete(`/posts/${id}`, {
+            onSuccess: () => {
+                alert('Post deleted successfully!')
+            },
+            onError: function(errors) {
+                console.error(errors);
+            },
+            preserveScroll: true,
+        })
+    }
+}
 </script>
 
 <template>
@@ -85,7 +85,7 @@ const posts = [
                     <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
 
                     <tr
-                        v-for="post in posts"
+                        v-for="post in props.posts"
                         :key="post.id"
                         class="hover:bg-gray-50 dark:hover:bg-gray-800 transition"
                     >
@@ -110,21 +110,24 @@ const posts = [
                             <div class="flex justify-center gap-2">
 
                                 <!-- View -->
-                                <button
+                                <Link
+                                    :href="`/posts/${post.id}`"
                                     class="rounded-md bg-blue-500 px-3 py-1 text-xs text-white hover:bg-blue-600 transition"
                                 >
                                     View
-                                </button>
+                                </Link>
 
                                 <!-- Edit -->
-                                <button
+                                <Link
+                                    :href="`/posts/${post.id}/edit`"
                                     class="rounded-md bg-green-500 px-3 py-1 text-xs text-white hover:bg-green-600 transition"
                                 >
                                     Edit
-                                </button>
+                                </Link>
 
                                 <!-- Delete -->
                                 <button
+                                    @click="deletePost(post.id)"
                                     class="rounded-md bg-red-500 px-3 py-1 text-xs text-white hover:bg-red-600 transition"
                                 >
                                     Delete

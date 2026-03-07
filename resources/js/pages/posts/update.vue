@@ -1,26 +1,35 @@
 <script setup lang="ts">
-import { Head, Link, useForm } from '@inertiajs/vue3'
+import { Head, Link, useForm } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3'
 import InputError from '@/components/InputError.vue';
 import { Input } from '@/components/ui/input';
 import AppLayout from '@/layouts/AppLayout.vue'
 
+
+
+const props = defineProps<{
+    post: {
+        id: number
+        title: string
+        body: string
+    }
+}>()
+
 const form = useForm({
-    title: '',
-    body: '',
+    title: props.post.title,
+    body: props.post.body,
 })
 
 function submit() {
-    form.post('/posts', {
-        onSuccess: () => {
-            form.reset()
-        },
+    router.put(`/posts/${props.post.id}`, form, {
+        onSuccess: () => form.reset(),
         preserveScroll: true,
     })
 }
 </script>
 
 <template>
-    <Head title="Create Post" />
+    <Head title="UpDate Post" />
 
     <AppLayout>
 
@@ -30,7 +39,7 @@ function submit() {
             <div class="flex items-center justify-between mb-6">
 
                 <h1 class="text-2xl font-bold text-gray-800 dark:text-white">
-                    Create New Post
+                    UpDate  Post
                 </h1>
 
                 <Link
@@ -85,7 +94,7 @@ function submit() {
                             type="submit"
                             class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition font-medium"
                         >
-                            Create Post
+                            UpDate Post
                         </button>
 
                         <Link
