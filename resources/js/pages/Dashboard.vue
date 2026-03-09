@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
+import { onMounted } from "vue";
 import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
+import { echo } from "@/lib/echo";
 import { dashboard } from '@/routes';
 import type { BreadcrumbItem } from '@/types';
 
@@ -11,6 +13,14 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: dashboard(),
     },
 ];
+onMounted(() => {
+
+
+    echo.channel("user-logging")
+        .listen("LoggedIn", (e: any) => {
+            console.log("User logged in:", e.user.name);
+        });
+});
 </script>
 
 <template>

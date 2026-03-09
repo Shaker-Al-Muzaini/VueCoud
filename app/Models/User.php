@@ -50,9 +50,5 @@ class User extends Authenticatable
             'two_factor_confirmed_at' => 'datetime',
         ];
     }
-    public function interests(): BelongsToMany
-    {
-        return $this->belongsToMany(Item::class, 'user_interests', 'user_id', 'item_id')
-            ->withTimestamps();
-    }
+
 }

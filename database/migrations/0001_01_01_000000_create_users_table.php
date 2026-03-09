@@ -13,10 +13,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('username')->unique();
+            $table->string('wallet_id')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('google_id')->nullable();
+            $table->string('profile_image')->nullable();
+            $table->string('referral_code')->unique();
+            $table->string('referred_by')->nullable();
+            $table->string('wallet_name')->nullable();
+            $table->string('wallet_number')->nullable();
+            $table->string('wallet_type')->nullable();
+            $table->boolean('is_special_user')->default(false);
+            $table->boolean('wallet_active')->default(false);
+            $table->string("phone")->nullable();
+            $table->enum('status', ['active', 'inactive', 'banned'])->default('active');
+            $table->dateTime("last_login_at")->nullable();
+            $table->enum("login_type", ["email", 'google', 'apple', 'github', 'facebook'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
