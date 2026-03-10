@@ -28,10 +28,10 @@ return new class extends Migration
             $table->string('wallet_type')->nullable();
             $table->boolean('is_special_user')->default(false);
             $table->boolean('wallet_active')->default(false);
-            $table->string("phone")->nullable();
+            $table->string('phone')->nullable();
             $table->enum('status', ['active', 'inactive', 'banned'])->default('active');
-            $table->dateTime("last_login_at")->nullable();
-            $table->enum("login_type", ["email", 'google', 'apple', 'github', 'facebook'])->nullable();
+            $table->dateTime('last_login_at')->nullable();
+            $table->enum('login_type', ['email', 'google', 'apple', 'github', 'facebook'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
