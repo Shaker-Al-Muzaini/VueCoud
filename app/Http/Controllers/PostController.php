@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         $posts = Post::latest()->get();
 
-        return inertia('posts/Index', compact('posts'));
+        return inertia('admin/Index', compact('posts'));
     }
 
     /**
@@ -22,7 +22,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return inertia('posts/create');
+        return inertia('admin/create');
     }
 
     /**
@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         Post::create($request->validated());
 
-        return to_route('posts.index');
+        return to_route('admin.index');
 
     }
 
@@ -42,7 +42,7 @@ class PostController extends Controller
     public function show(string $id) {
         $post = Post::findOrFail($id);
 
-        return inertia('posts/Show', [
+        return inertia('admin/Show', [
             'post' => $post
         ]);
     }
@@ -54,7 +54,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        return inertia('posts/update', [
+        return inertia('admin/update', [
             'post' => $post
         ]);
     }
@@ -68,7 +68,7 @@ class PostController extends Controller
 
         $post->update($request->validated());
 
-        return to_route('posts.index');
+        return to_route('admin.index');
     }
 
     /**
@@ -79,6 +79,6 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
         $post->delete();
-        return to_route('posts.index');
+        return to_route('admin.index');
     }
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, LayoutGrid, DiamondPlus, Loader } from 'lucide-vue-next';
+import { BookOpen, FolderGit2, House, DiamondPlus, Coins } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -19,20 +19,22 @@ import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: 'Home',
         href: dashboard(),
-        icon: LayoutGrid,
+        icon: House,
     },
+    {
+        title: 'Cash Draw',
+        href:'/cash-draw',
+        icon: Coins ,
+    },
+
     {
         title: 'Post',
-        href:'/posts',
+        href:'/admin',
         icon: DiamondPlus,
     },
-    {
-        title: 'recommendations',
-        href:'/recommendations',
-        icon: Loader ,
-    },
+
 
 
 ];

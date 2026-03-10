@@ -24,14 +24,31 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'username' => fake()->unique()->userName(),
+            'wallet_id' => fake()->unique()->uuid(),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => static::$password ??= Hash::make('12341234'),
+            'google_id' => null,
+            'profile_image' => null,
+            'referral_code' => strtoupper(fake()->unique()->bothify('REF###')),
+            'referred_by' => null,
+            'wallet_name' => fake()->word(),
+            'wallet_number' => fake()->numerify('##########'),
+            'wallet_type' => fake()->randomElement(['paypal', 'bank', 'crypto']),
+            'is_special_user' => fake()->boolean(10), // 10% chance
+            'wallet_active' => fake()->boolean(),
+            'phone' => fake()->phoneNumber(),
+            'status' => fake()->randomElement(['active', 'inactive', 'banned']),
+            'last_login_at' => fake()->dateTimeBetween('-1 year', 'now'),
+            'login_type' => fake()->randomElement(['email', 'google', 'apple', 'github', 'facebook']),
             'remember_token' => Str::random(10),
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'two_factor_confirmed_at' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 

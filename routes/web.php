@@ -13,14 +13,12 @@ Route::inertia('/', 'Welcome', [
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 });
-Route::resource('posts', PostController::class);
+Route::resource('admin', PostController::class);
 
 // Progress routes
 
-Route::post('/start', [ProgressController::class, 'start']);
-Route::get('/progress', [ProgressController::class, 'progress']);
-Route::get('/recommendations', [ProgressController::class, 'showRecommendations'])
-    ->name('recommendations');
+
+Route::get('/cash-draw', [ProgressController::class, 'index']);
 
 
 
