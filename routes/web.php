@@ -19,6 +19,10 @@ Route::resource('admin', PostController::class);
 
 
 Route::get('/cash-draw', [ProgressController::class, 'index']);
+Route::get('/product_draws', [ProgressController::class, 'index2']);
+Route::get('/winners', [ProgressController::class, 'index3']);
+Route::get('/fAQs', [ProgressController::class, 'index4']);
+Route::get('/contact', [ProgressController::class, 'index5']);
 
 
 

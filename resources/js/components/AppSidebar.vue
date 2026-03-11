@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, House, DiamondPlus, Coins } from 'lucide-vue-next';
+import { BookOpen, FolderGit2, House, DiamondPlus, Coins, Speaker ,Medal ,NotebookTabs,Signature } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -27,6 +27,26 @@ const mainNavItems: NavItem[] = [
         title: 'Cash Draw',
         href:'/cash-draw',
         icon: Coins ,
+    },
+    {
+        title: 'Product Draws',
+        href:'/product_draws',
+        icon: Speaker ,
+    },
+    {
+        title: 'Winners',
+        href:'/winners',
+        icon: Medal ,
+    },
+    {
+        title: 'FAQs',
+        href:'/fAQs',
+        icon: NotebookTabs,
+    },
+    {
+        title: 'Contact',
+        href:'/contact',
+        icon: Signature,
     },
 
     {
