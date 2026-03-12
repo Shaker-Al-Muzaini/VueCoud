@@ -228,6 +228,82 @@ onMounted(() => {
                 </div>
             </section>
 
+            <!-- ───────────── PAYMENT METHODS ───────────── -->
+            <section class="payment-section">
+                <div class="payment-inner">
+                    <div class="section-header">
+                        <h2>
+                            <span class="secure-badge">Secure</span>
+                            Payment Methods
+                        </h2>
+                        <p>We accept multiple secure payment options for your convenience</p>
+                    </div>
+
+                    <div class="payment-grid">
+
+                        <!-- JazzCash -->
+                        <div class="payment-card">
+                            <div class="payment-icon bg-red">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                                     fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                                </svg>
+                            </div>
+                            <h4>JazzCash</h4>
+                            <p>Fast and secure mobile payments in Pakistan</p>
+                        </div>
+
+                        <!-- EasyPaisa -->
+                        <div class="payment-card payment-card--featured">
+                            <div class="payment-icon bg-green">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                                     fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                                </svg>
+                            </div>
+                            <h4>EasyPaisa</h4>
+                            <p>Convenient mobile payment solution</p>
+                        </div>
+
+                        <!-- Credit Cards -->
+                        <div class="payment-card">
+                            <div class="payment-icon bg-purple">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                                     fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                    <line x1="1" y1="10" x2="23" y2="10"/>
+                                </svg>
+                            </div>
+                            <h4>Credit Cards</h4>
+                            <p>Secure payment with major credit cards</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ───────────── CTA BANNER ───────────── -->
+            <section class="cta-section">
+                <div class="cta-inner">
+                    <div class="cta-dot"></div>
+                    <h2 class="cta-title">Ready to Try Your Luck?</h2>
+                    <p class="cta-desc">
+                        Join thousands of users who are already participating in our exciting lucky
+                        draws! Choose your preferred draw type and start winning today.
+                    </p>
+                    <button class="cta-btn" @click="user ? handleJoin('cash') : router.visit('/register')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Get Started Now
+                    </button>
+                </div>
+            </section>
+
         </div>
 
     </AppLayout>
@@ -592,10 +668,196 @@ h1 {
 .btn-product { background: linear-gradient(135deg, #22c55e, #16a34a); }
 
 /* ─────────────────────────────────────────
+   PAYMENT METHODS
+───────────────────────────────────────── */
+.payment-section {
+    margin-top: 90px;
+    padding: 0 20px;
+}
+
+.payment-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    background: rgba(255,255,255,.07);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 28px;
+    padding: 56px 40px;
+}
+
+.payment-inner .section-header {
+    text-align: center;
+    margin-bottom: 44px;
+}
+
+.payment-inner .section-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.payment-inner .section-header p {
+    margin-top: 10px;
+    opacity: .78;
+    font-size: .97rem;
+}
+
+/* "Secure" pill badge */
+.secure-badge {
+    background: linear-gradient(135deg, #6366f1, #818cf8);
+    color: white;
+    padding: 2px 14px;
+    border-radius: 20px;
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.payment-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px 22px;
+    text-align: center;
+    box-shadow: 0 6px 24px rgba(0,0,0,.10);
+    border: 2px solid transparent;
+    transition: transform .3s, box-shadow .3s, border-color .25s;
+    color: #1e293b;
+}
+
+.payment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 36px rgba(0,0,0,.15);
+    border-color: rgba(99,102,241,.3);
+}
+
+.payment-card--featured {
+    border-color: rgba(34,197,94,.35);
+    box-shadow: 0 8px 30px rgba(34,197,94,.12);
+}
+
+.payment-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.18);
+}
+
+.bg-red    { background: linear-gradient(135deg, #ef4444, #f97316); }
+.bg-green  { background: linear-gradient(135deg, #22c55e, #4ade80); }
+.bg-purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+
+.payment-card h4 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #1e293b;
+}
+
+.payment-card p {
+    font-size: .82rem;
+    color: #64748b;
+    line-height: 1.5;
+    opacity: 1;
+    margin-top: 0;
+}
+
+/* ─────────────────────────────────────────
+   CTA BANNER
+───────────────────────────────────────── */
+.cta-section {
+    margin-top: 90px;
+    padding: 0 20px 20px;
+}
+
+.cta-inner {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(236,72,153,.55), rgba(239,68,68,.45), rgba(249,115,22,.4));
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 28px;
+    padding: 64px 40px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* decorative dot accent (matches screenshot) */
+.cta-dot {
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ec4899;
+    box-shadow: 0 0 0 8px rgba(236,72,153,.25);
+}
+
+.cta-title {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.cta-desc {
+    font-size: 1rem;
+    opacity: .88;
+    max-width: 580px;
+    margin: 0 auto 36px;
+    line-height: 1.65;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #f59e0b;
+    color: white;
+    border: none;
+    padding: 16px 36px;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s, background .2s;
+    box-shadow: 0 6px 24px rgba(245,158,11,.4);
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(245,158,11,.5);
+    background: #d97706;
+}
+
+.cta-btn:active { transform: translateY(0); }
+
+/* ─────────────────────────────────────────
    RESPONSIVE
 ───────────────────────────────────────── */
 @media (max-width: 640px) {
-    .cards-grid { grid-template-columns: 1fr; }
-    h1 { font-size: 2rem; }
+    .cards-grid      { grid-template-columns: 1fr; }
+    .payment-grid    { grid-template-columns: 1fr; }
+    h1               { font-size: 2rem; }
+    .payment-inner   { padding: 36px 20px; }
+    .cta-inner       { padding: 52px 22px; }
+    .cta-dot         { display: none; }
 }
 </style>
