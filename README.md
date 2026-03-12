@@ -1,0 +1,54 @@
+<svg width="100%" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="outer-clip">
+      <path d="M30,60 Q10,20 60,10 Q200,-10 400,5 Q560,-5 640,30 Q680,50 670,120 Q680,180 660,230 Q640,280 580,290 Q420,310 260,295 Q100,305 40,270 Q0,245 20,190 Q10,130 30,60Z"/>
+    </clipPath>
+    <clipPath id="card-clip">
+      <rect x="68" y="38" width="544" height="220" rx="20"/>
+    </clipPath>
+  </defs>
+
+  <!-- Outer blob -->
+  <path d="M30,60 Q10,20 60,10 Q200,-10 400,5 Q560,-5 640,30 Q680,50 670,120 Q680,180 660,230 Q640,280 580,290 Q420,310 260,295 Q100,305 40,270 Q0,245 20,190 Q10,130 30,60Z"
+        fill="#3730a3"/>
+
+  <!-- Inner card -->
+  <rect x="68" y="38" width="544" height="220" rx="20" fill="#9333ea" opacity="0.55"/>
+  <rect x="68" y="38" width="544" height="220" rx="20" fill="#be185d" opacity="0.45"/>
+  <rect x="68" y="38" width="544" height="110" rx="20" fill="#fff" opacity="0.04"/>
+  <rect x="68" y="38" width="544" height="220" rx="20" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.18"/>
+
+  <!-- Pink dot -->
+  <circle cx="68" cy="148" r="12" fill="#ec4899"/>
+  <circle cx="68" cy="148" r="20" fill="#ec4899" opacity="0.22"/>
+
+  <!-- Title -->
+  <text font-family="'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="800"
+        fill="#ffffff" x="340" y="110" text-anchor="middle">
+    Ready to Try Your Luck?
+  </text>
+
+  <!-- Description -->
+  <text font-family="'Segoe UI', system-ui, sans-serif" font-size="13"
+        fill="#ffffff" opacity="0.88" x="340" y="145" text-anchor="middle">
+    Join thousands of users who are already participating in our exciting lucky
+  </text>
+  <text font-family="'Segoe UI', system-ui, sans-serif" font-size="13"
+        fill="#ffffff" opacity="0.88" x="340" y="163" text-anchor="middle">
+    draws! Choose your preferred draw type and start winning today.
+  </text>
+
+  <!-- Button -->
+  <rect x="255" y="188" width="170" height="44" rx="12" fill="#f59e0b"/>
+  <rect x="255" y="188" width="170" height="44" rx="12" fill="#fff" opacity="0.08"/>
+
+  <!-- Person icon -->
+  <circle cx="284" cy="205" r="5" fill="#fff"/>
+  <path d="M274,218 Q274,212 284,212 Q294,212 294,218" fill="#fff"/>
+
+  <!-- Button text -->
+  <text font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="700"
+        fill="#ffffff" x="305" y="213" dominant-baseline="central">
+    Get Started Now
+  </text>
+</svg>
