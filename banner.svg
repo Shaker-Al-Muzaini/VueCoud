@@ -17,6 +17,8 @@
   <text font-family="'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="800" fill="#ffffff" x="340" y="110" text-anchor="middle">Ready to Try Your Luck?</text>
   <text font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#ffffff" opacity="0.88" x="340" y="145" text-anchor="middle">Join thousands of users who are already participating in our exciting lucky</text>
   <text font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#ffffff" opacity="0.88" x="340" y="163" text-anchor="middle">draws! Choose your preferred draw type and start winning today.</text>
+  <text font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#ffffff" opacity="0.88" x="340" y="163" text-anchor="middle">Eng:Shaker.</text>
+
   <rect x="255" y="188" width="170" height="44" rx="12" fill="#f59e0b"/>
   <rect x="255" y="188" width="170" height="44" rx="12" fill="#fff" opacity="0.08"/>
   <circle cx="284" cy="205" r="5" fill="#fff"/>
